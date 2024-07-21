@@ -62,6 +62,7 @@ static void printArr(int[] arr) {
         System.out.println();
      }
 }
+
     public static void main(String args[]) {
              //swap(2,5);
              //print_number(12);
