@@ -60,22 +60,8 @@ public class day4practise {
       System.out.println(even);
   
   }
-  // QUESTION 2
-  public static int countDigit(long number, int digit) {
-    String numberStr = Long.toString(number);
-    char digitChar = Character.forDigit(digit, 10);
-    
-    // Count the occurrences of digitChar in numberStr
-    int count = 0;
-    for (int i = 0; i < numberStr.length(); i++) {
-        if (numberStr.charAt(i) == digitChar) {
-            count++;
-        }
-    }
-    
-    // Return the count
-    return count;
-  }
+  
+  
   // QUESTION 3
   public static int inverse(int n) {
     int temp = 0;
@@ -210,18 +196,49 @@ public static void series(int n1, int n2) {
 }
 //QUESTION 19
 public static void oddEven(int n) {
-    int sum =0;
+    
     int temp = 0;
+    int oddSum=0;
+    int evensum=0;
     while(n>0) {
         temp = n%10;
-        sum = sum+ temp;
+        if(temp%2 ==0) {
+            evensum+= temp;
+        } else {
+            oddSum+=temp;
+        }
         n = n/10;
         
     }
-    if(sum%4==0||sum%3==0) {
+    if(evensum%4==0||oddSum%3==0) {
        System.out.println("Yes");
     } else{
         System.out.println("No");
+    }
+}
+public static void shoppingGame(int m, int n) {
+    int turn = 1; // 1 for Aayush's turn, 2 for Harshit's turn
+    int count = 1; // The number of smartphones to be purchased in the current turn
+
+    while (true) {
+        if (turn == 1) {
+            if (m >= count) {
+                m -= count;
+                turn = 2; // Switch to Harshit's turn
+            } else {
+                System.out.println("Harshit");
+                break;
+            }
+        } else {
+            if (n >= count) {
+                n -= count;
+                turn = 1; // Switch to Aayush's turn
+            } else {
+                System.out.println("Aayush");
+                break;
+            }
+        }
+        count++; // Increase the number of smartphones to be purchased in the next turn
     }
 }
 
@@ -305,6 +322,67 @@ public static int primeFactors(int number) {
       int  sumOfFactors = primeFactors(number);
       return sumOfDigit == sumOfFactors;
     }
+    // QUESTION 2
+    public static int countDigits(int number, int digit) {
+        int count =0;
+        while(number>0) {
+            int temp = number%10;
+            if(temp == digit) {
+                count++;
+            }
+            number/=10;
+
+        }
+        return count;
+    }
+    public static String chewacaNumber(String number) {
+        // Convert the number to a character array to work with individual digits
+        char[] digits = number.toCharArray();
+
+        // Iterate through the digits of the number
+        for (int i = 0; i < digits.length; i++) {
+            // Get the numeric value of the current digit
+            int digit = Character.getNumericValue(digits[i]);
+            // Calculate the inverted digit
+            int invertedDigit = 9 - digit;
+
+            // Replace the current digit with the inverted digit if it results in a smaller number
+            if (invertedDigit < digit) {
+                // Make sure the first digit is not zero
+                if (i == 0 && invertedDigit == 0) {
+                    continue;
+                }
+                digits[i] = Character.forDigit(invertedDigit, 10);
+            }
+        }
+
+        // Convert the character array back to a string
+        return new String(digits);
+    }
+    public static int inverseOfNumber(int num) {
+        int place = 1;
+        int ans = 0;
+        while (num != 0) {
+            int rem = num % 10;
+            ans += place * Math.pow(10, rem - 1);
+            num /= 10;
+            place++;
+        }
+        return ans;
+    }
+    //any to any 
+    static long D2A(long n, int a) {
+        long A = 0;
+        long m;
+        long i = 1;
+        while (n > 0) {
+            m = n % a;
+            A += m * i;
+            i *= 10;
+            n /= a;
+        }
+        return A;
+    }
     public static void main(String[] args) {
         //swap(2, 5);
         //printnatural_number(12);
@@ -385,12 +463,57 @@ public static int primeFactors(int number) {
 // int n1= sc.nextInt();
 // int n2 = sc.nextInt();
 // btwArmstrong(n1, n2);
-int numbers = sc.nextInt();
-if(sum(numbers)) {
-    System.out.println("1");
-} else {
-    System.out.println("0");
-}
+// int numbers = sc.nextInt();
+// if(sum(numbers)) {
+//     System.out.println("1");
+// } else {
+//     System.out.println("0");
+// }
+
+
+
+// int n1 = sc.nextInt();
+// for(int i=1;i<=n1;i++) {
+//     int m = sc.nextInt();
+//     int n = sc.nextInt();
+//     shoppingGame(m, n);
+
+// int number = sc.nextInt();
+// int digit = sc.nextInt();
+// System.out.println(countDigits(number, digit));
+
+
+// String number = sc.nextLine();
+//         String minimizedNumber = chewacaNumber(number);
+//         System.out.println( minimizedNumber);
+
+
+        // int num = sc.nextInt();
+        // System.out.print(inverse(num));
+        int b = sc.nextInt();
+        int a = sc.nextInt();
+        long n = sc.nextLong(); // Read n as long
+        sc.close();
+
+        long num = A2D(n, b);
+        num = D2A(num, a);
+        System.out.print(num);
+    }
+
+    static long A2D(long n, int b) {
+        long D = 0;
+        long power = 1;
+        while (n > 0) {
+            long dig = n % 10;
+            D += dig * power;
+            power *= b;
+            n /= 10;
+        }
+        return D;
+
+
+
+
 
     }
  }

@@ -62,7 +62,7 @@ public class day5 {
                 arr[i] = arr[i+1];
                 arr[i+1] = temp;
             }
-          }
+          } 
        }
        
        
@@ -72,7 +72,7 @@ public class day5 {
         System.out.println();
        }
     public static void main(String[] args) {
-        //int num =3;
+        //  int num =3;
         int [] arr = {2,4,5,7,3,1,9,6};
         //System.out.println(binarySearch(arr, num));
         //System.out.println(lowerBound(arr, num)); 
