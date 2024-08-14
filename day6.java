@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class day6 {
     public static void selectionSort(int[] arr) {
@@ -46,7 +47,7 @@ public class day6 {
 
         int maxsum =Integer.MIN_VALUE;
         for(int i=0;i<nums.length;i++) {
-            for(int j=i;i<nums.length;j++) {
+            for(int j=i;j<nums.length;j++) {
               int tempsum = sum(nums,i,j);
               maxsum = Math.max(maxsum,tempsum);
             }
@@ -54,15 +55,33 @@ public class day6 {
         }
         return maxsum;
        }
+       public static void seeding(int n) {
+        
+        // Write your code here
+        for(int i=1;i<=n;i++)  {
+            for(int j=n-i;j>0;j--) {
+                System.out.print("1 ");
+            }
+            System.out.println(); 
+        }
+        
+        
+    }
        
     public static void main(String[] args) {
         //int[] arr = {-2,1,-3,4,-1,2,1,-5,4};
-        int [] arr = {6,4,1,8,3,2};
-        selectionSort(arr);
+       // int [] arr = {6,4,1,8,3,2};
+       // selectionSort(arr);
         //insertionSort(arr);
         // Arrays.sort(arr);
         // System.out.println(Arrays.binarySearch(arr, 3));
-         display(arr);
+         //display(arr);
         //System.out.println(subArray(nums));
+        //System.out.println(subArray(arr));
+        //display(arr);
+
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        seeding(n);
     }
 }
