@@ -103,7 +103,7 @@ public class day13 {
       //  populate(nums);
         display(nums);
         System.out.println();
-        sortComplete(nums);
+        sortComplete(nums);day
         //sortByCols(nums);
         //sortByRows(nums);
        // swap(nums);
