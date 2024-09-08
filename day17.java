@@ -48,13 +48,38 @@ public class day17 {
         int r =countSubSequence(ques.substring(1));
         return l+r;
     }
+    static void validParanthesis(int n, String ans,int l, int r) {
+        if(l==n && r==n) {
+             System.out.println(ans);
+            return ;
+        }
+        if(l<n) {
+            validParanthesis(n, ans + "{", l+1, r);
+        }
+        if(r<l) {
+            validParanthesis(n, ans +"}", l, r+1);
+        }  
+    }
+    static void permutation(String question , String ans) {
+        if(question.length() == 0) {
+            System.out.println(ans);
+            return;
+        }
+        for(int i=0;i<question.length();i++) {
+            String s1 = question.substring(0, i);
+            String s2 = question.substring(i+1);
+            permutation(s1+s2, ans+question.charAt(i));
+        }
+    }
     public static void main(String[] args) {
        
         //System.out.println( fibbonacci(8));
-       // generatesubsequence("car", "");
+      //  generatesubsequence("car", "");
        // toses(3, "");
         //System.out.println(tosescount(2, null));
-        System.out.println(countSubSequence("CAR"));
+       // System.out.println(countSubSequence("CAR"));
+      // validParanthesis(3, "", 0, 0);
+      permutation("abc", "");
     }
 }
  
